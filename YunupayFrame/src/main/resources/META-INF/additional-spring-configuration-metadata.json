@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "spring.http.encoding.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.http.encoding.enable'"
+  },
+  {
+    "name": "server.servlet.context-path",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.context-path'"
+  },
+  {
+    "name": "spring.redis.pool.max-total",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.redis.pool.max-total'"
+  },
+  {
+    "name": "spring.redis.pool.test-on-return",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.redis.pool.test-on-return'"
+  }
+]}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <property name="APP_NAME" value="YunupayFrame"/>
+    <property name="LOG_ENCODING" value="UTF-8"/>
+    <property name="LOG_LEVEL" value="INFO"/>
+    <substitutionProperty name="LOG_NAME_INFO" value="YunupayLog"/>
+    <substitutionProperty name="LOG_HOME_INFO" value="E:\\YunupayFrameLogs"/>
+    <contextName>${APP_NAME}</contextName>
+    	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} [ %t:%r ] - %msg%n</pattern>
+	    </encoder>
+	</appender>
+	
+	<appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME_INFO}/${LOG_NAME_INFO}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME_INFO}/${LOG_NAME_INFO}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>365</maxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>128MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} [ %t:%r ] - %msg%n</pattern>
+            <charset>${LOG_ENCODING}</charset>
+        </encoder>
+    </appender>
+    
+    <appender name ="ASYNC" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <appender-ref ref="INFO"/>
+    </appender>
+	
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ASYNC"/>
+    </root>
+
+
+</configuration>

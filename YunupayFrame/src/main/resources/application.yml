@@ -1,0 +1,36 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /YunupayFrame
+logging:
+  config: classpath:logback-spring.xml
+spring:
+  application:
+    name: YunupayFrame
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.0.48:3306/testdb?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: yunupay
+  http: 
+    encoding:
+      charset: UTF-8
+      enable: true
+      force: true
+  redis:
+    database: 1
+    host: 192.168.0.48
+    port: 6379
+    timeout: 100000     
+    pool:
+      max-wait: 600     # 连接池最大阻塞等待时间
+      max-idle: 5       # 连接池中的最大空闲连接
+      min-idle: 0       # 连接池中的最小空闲连接
+      max-total: 30     # 连接池最大连接数
+      testOnReturn: true
+      testWhileIdle: true
+      testOnBorrow: true
+      numTestsPerEvictionRun: 10
+      timeBetweenEvictionRunsMillis: 60000
+    cache: 
+      defaultExpireTime: 1000
